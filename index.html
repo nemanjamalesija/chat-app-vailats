@@ -6,76 +6,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chatter</title>
   </head>
-  <body class="bg-zinc-50">
-    <h1 class="heading-primary text-3xl text-cyan-500 mb-8 font-bold">
-      Chatter
-    </h1>
-    <section class="channels">
-      <div>
-        <h2 class="text-xl text-cyan-500 font-semibold mb-2">Favorites</h2>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class=""><strong>MeetUp</strong></h3>
-          <span>11:51</span>
+  <body>
+    <div class="grid grid-cols-[1.5fr,3fr] max-w-6xl mx-auto bg-white mt-20">
+      <section class="channels" id="#channels">
+        <div class="bg-zinc-100 px-4 mb-5">
+          <div class="pb-2">
+            <img
+              id="logo"
+              src="https://ip.lfe.mw.tum.de/sections/moocus.png"
+              alt="logo"
+              class="h-12 w-12 bg-cyan-500 inline"
+            />
+            <h1
+              class="heading-primary text-xl text-cyan-500 font-bold inline align-bottom"
+            >
+              chatter | app
+            </h1>
+          </div>
         </div>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class=""><strong>OktoberFest</strong></h3>
-          <span>10:51</span>
-        </div>
-      </div>
 
-      <div class="mb-8">
-        <h2 class="text-xl text-cyan-500 font-semibold mb-2">Regular</h2>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class=""><strong>WeatherChannel</strong></h3>
-          <span>Yesterday</span>
+        <div class="px-2">
+          <div class="mb-5">
+            <h2 class="text-sm uppercase text-cyan-500 font-semibold mb-2">
+              Favorites
+            </h2>
+
+            <ul class="mb-8">
+              <li class="py-5 px-3 bg-zinc-100">
+                <span class="text-[#222] text-base"> MeetUp </span>
+                <span class="text-xs text-[#555]">11:51</span>
+              </li>
+              <li class="py-5 px-3">
+                <span class="text-base text-[#222]">OctobarFest</span>
+                <span class="text-xs text-[#555]">11:51</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-8">
+            <h2 class="text-sm uppercase text-cyan-500 font-semibold mb-2">
+              Regular
+            </h2>
+            <ul>
+              <li class="py-4 px-3">
+                <span class="text-[#222] text-base"> WeatherChannel </span>
+                <span class="text-xs text-[#555]">Yesterday</span>
+              </li>
+              <li class="py-4 px-3">
+                <span class="text-[#222] text-base"> SeventContinents </span>
+                <span class="text-xs text-[#555]">23 May 2018</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class=""><strong>SeventContinents</strong></h3>
-          <span>23 May 2018</span>
-        </div>
-      </div>
-    </section>
-    <section class="chats">
-      <h2 class="font-bold text-2xl mb-5 text-cyan-500">MeetUp</h2>
-      <button
-        class="text-white uppercase py-2 px-3 bg-cyan-500 font-semibold rounded-sm mb-5"
-      >
-        Favorite
-      </button>
-      <div class="mb-5">
-        <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
-        <p class="text-base mb-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-          possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
-          reprehenderit, minus, non beatae omnis!
-        </p>
-        <span>11:45</span>
-      </div>
-      <div class="mb-5">
-        <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
-        <p class="text-base mb-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-          possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
-          reprehenderit, minus, non beatae omnis!
-        </p>
-        <span>11:45</span>
-      </div>
-      <div class="mb-5">
-        <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
-        <p class="text-base mb-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-          possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
-          reprehenderit, minus, non beatae omnis!
-        </p>
-        <span>11:45</span>
-      </div>
-      <div class="mb-5">
-        <input class="" />
-        <button class="uppercase text-white bg-cyan-500 px-2 py-1 text-sm">
-          send
+      </section>
+      <section class="chats" id="#chats">
+        <h2 class="font-bold text-2xl mb-5 text-cyan-500">MeetUp</h2>
+        <button
+          class="text-white uppercase py-2 px-3 bg-cyan-500 font-semibold rounded-sm mb-5"
+        >
+          Favorite
         </button>
-      </div>
-    </section>
+        <div class="mb-5">
+          <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
+          <p class="text-base mb-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+            possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
+            reprehenderit, minus, non beatae omnis!
+          </p>
+          <small class="text-gray-600 font-thin">11:45</small>
+        </div>
+        <div class="mb-5">
+          <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
+          <p class="text-base mb-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+            possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
+            reprehenderit, minus, non beatae omnis!
+          </p>
+          <small class="text-gray-600 font-thin">11:45</small>
+        </div>
+        <div class="mb-5">
+          <h4 class="font-semibold text-cyan-500 text-sm mb-2">Jessi Koch</h4>
+          <p class="text-base mb-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+            possimus assumenda saepe dignissimos consequuntur ad ipsa, fugit
+            reprehenderit, minus, non beatae omnis!
+          </p>
+          <small class="text-gray-600 font-thin">11:45</small>
+        </div>
+        <div class="mb-5">
+          <input class="" />
+          <button class="uppercase text-white bg-cyan-500 px-2 py-1 text-sm">
+            send
+          </button>
+        </div>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
