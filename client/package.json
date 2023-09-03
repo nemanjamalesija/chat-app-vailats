@@ -13,6 +13,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "@clerk/clerk-js": "^4.56.2",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
     "socket.io-client": "^4.7.2",
