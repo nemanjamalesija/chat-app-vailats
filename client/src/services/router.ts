@@ -1,4 +1,6 @@
 import HomePage from '../components/Home';
+import SignInPage from '../components/SignIn';
+import SignUpPage from '../components/SignUp';
 
 const router = {
   init: () => {
@@ -27,15 +29,29 @@ const router = {
     let pageElement = null;
 
     switch (route) {
-      case '/home':
-        // window.dispatchEvent(new Event('home-change'));
+      case '/':
         pageElement = new HomePage();
 
         break;
     }
 
+    switch (route) {
+      case 'sign-in':
+        pageElement = new SignInPage();
+
+        break;
+    }
+
+    switch (route) {
+      case 'sign-up':
+        pageElement = new SignUpPage();
+
+        break;
+    }
+
     if (pageElement) {
-      const cacheMain = document.querySelector('main');
+      const cacheMain = document.querySelector('.cnt');
+
       // clear dom before apending
       if (cacheMain.children[0]) cacheMain.children[0].remove();
 

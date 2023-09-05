@@ -13,10 +13,24 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 const clerkFrontendApi = `pk_test_ZWFnZXItZnJvZy0xLmNsZXJrLmFjY291bnRzLmRldiQ`;
-const clerk = new Clerk(clerkFrontendApi);
-await clerk.load({
-  // Set load options here...
-});
+
+// document.querySelector<HTMLDivElement>('.cnt')!.innerHTML = `
+//   <div
+//     id="user-button"
+//   ></div>
+// `;
+
+// document.querySelector<HTMLDivElement>('.cnt')!.innerHTML = `
+//   <div
+//     id="sign-in"
+//   ></div>
+// `;
+
+// const signInComponent = document.querySelector<HTMLDivElement>('#sign-in')!;
+// const clerk = new Clerk(clerkFrontendApi);
+// await clerk.load();
+
+// clerk.mountSignIn(signInComponent, {});
 
 // const socket = io('//localhost:3000');
 
