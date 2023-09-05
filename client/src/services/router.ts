@@ -22,6 +22,7 @@ const router = {
   },
 
   go: (route, addToHistory = true) => {
+    console.log(route);
     if (addToHistory) {
       history.pushState({ route }, '', route);
     }
@@ -36,14 +37,14 @@ const router = {
     }
 
     switch (route) {
-      case 'sign-in':
+      case '/sign-in':
         pageElement = new SignInPage();
 
         break;
     }
 
     switch (route) {
-      case 'sign-up':
+      case '/sign-up':
         pageElement = new SignUpPage();
 
         break;
