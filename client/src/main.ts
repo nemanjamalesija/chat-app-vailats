@@ -13,8 +13,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   await clerk.load();
   app.clerk = clerk;
   app.currentUser = clerk.user;
-  const eventares = new Event('user-registered');
-  window.dispatchEvent(eventares);
+  window.dispatchEvent(new Event('user-registered'));
   app.router.init();
 });
 

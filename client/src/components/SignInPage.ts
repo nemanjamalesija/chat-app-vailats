@@ -23,7 +23,7 @@ export default class SignInPage extends HTMLElement {
     clerk.mountSignIn(signInComponent, {
       routing: 'path',
       path: '/sign-in',
-      signUpUrl: '/sign-up',
+      signUpUrl: 'sign-up',
       afterSignInUrl: '/chatter',
       redirectUrl: '/',
     });

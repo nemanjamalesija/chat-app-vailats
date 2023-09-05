@@ -55,3 +55,23 @@ body {
     #2193b0
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+/* navigation */
+
+.nav {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  justify-content: end;
+  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+}
+
+.cl-avatarBox {
+  height: 2.7rem;
+  width: 2.7rem;
+}
+
+.hiddens {
+  visibility: hidden;
+}

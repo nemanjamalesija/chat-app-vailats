@@ -1,3 +1,4 @@
+import UserButton from '../components/UserButton';
 import ChatterPage from '../components/ChatterPage';
 import HomePage from '../components/HomePage';
 import SignInPage from '../components/SignInPage';
@@ -30,12 +31,15 @@ const router = {
     }
 
     let pageElement = null;
+    let userButton = null;
 
     if (route == '/') pageElement = new HomePage();
     else if (route == '/sign-in') pageElement = new SignInPage();
     else if (route == '/sign-up') pageElement = new SignUpPage();
-    else if (route == '/chatter') pageElement = new ChatterPage();
-    else {
+    else if (route == '/chatter') {
+      pageElement = new ChatterPage();
+      userButton = new UserButton();
+    } else {
       pageElement = new HomePage();
     }
 
@@ -49,6 +53,11 @@ const router = {
 
       window.scrollX = 0;
       window.scrollY = 0;
+    }
+
+    if (userButton) {
+      const cacheMain = document.querySelector('body');
+      cacheMain?.appendChild(userButton);
     }
   },
 };
