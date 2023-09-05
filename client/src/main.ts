@@ -9,13 +9,13 @@ window.app = {};
 app.router = router;
 
 window.addEventListener('DOMContentLoaded', async () => {
-  app.router.init();
   const clerk = new Clerk(clerkPublicKey);
   await clerk.load();
+  app.clerk = clerk;
   app.currentUser = clerk.user;
-
   const eventares = new Event('user-registered');
   window.dispatchEvent(eventares);
+  app.router.init();
 });
 
 // const socket = io('//localhost:3000');

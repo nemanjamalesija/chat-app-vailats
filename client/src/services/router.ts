@@ -24,7 +24,7 @@ const router = {
 
   go: (route, addToHistory = true) => {
     console.log(route);
-    console.log(app.session);
+
     if (addToHistory) {
       history.pushState({ route }, '', route);
     }
@@ -32,12 +32,9 @@ const router = {
     let pageElement = null;
 
     if (route == '/') pageElement = new HomePage();
-
-    if (route === '/sign-in') pageElement = new SignInPage();
-
-    if (route === '/sign-up') new SignUpPage();
-
-    if (route === '/chatter') pageElement = new ChatterPage();
+    else if (route == '/sign-in') pageElement = new SignInPage();
+    else if (route == '/sign-up') pageElement = new SignUpPage();
+    else if (route == '/chatter') pageElement = new ChatterPage();
     else {
       pageElement = new HomePage();
     }

@@ -16,22 +16,16 @@ export default class SignUpPage extends HTMLElement {
   `;
 
     const signUpComponent = document.querySelector<HTMLDivElement>('#sign-up')!;
-    const clerk = new Clerk(clerkPublicKey);
+    const clerk = app.clerk;
     await clerk.load();
 
     clerk.mountSignUp(signUpComponent, {
       routing: 'path',
       path: '/sign-up',
-      signInUrl: 'sign-in',
+      signInUrl: '/sign-in',
       afterSignInUrl: '/chatter',
       redirectUrl: '/',
     });
-
-    // document.querySelector('.cnt').children[0].remove();
-    // clerk.openSignUp();
-
-    const link = document.querySelector('.cl-footerActionLink');
-    console.log(link);
   }
 
   connectedCallback() {
