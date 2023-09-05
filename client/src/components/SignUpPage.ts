@@ -23,7 +23,7 @@ export default class SignUpPage extends HTMLElement {
       routing: 'path',
       path: '/sign-up',
       signInUrl: 'sign-in',
-      afterSignInUrl: '/',
+      afterSignInUrl: '/chatter',
       redirectUrl: '/',
     });
 

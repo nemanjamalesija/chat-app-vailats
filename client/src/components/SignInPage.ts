@@ -24,7 +24,7 @@ export default class SignInPage extends HTMLElement {
       routing: 'path',
       path: '/sign-in',
       signUpUrl: 'sign-up',
-      afterSignInUrl: '/',
+      afterSignInUrl: '/chatter',
       redirectUrl: '/',
     });
   }

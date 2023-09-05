@@ -1,6 +1,7 @@
-import HomePage from '../components/Home';
-import SignInPage from '../components/SignIn';
-import SignUpPage from '../components/SignUp';
+import ChatterPage from '../components/ChatterPage';
+import HomePage from '../components/HomePage';
+import SignInPage from '../components/SignInPage';
+import SignUpPage from '../components/SignUpPage';
 
 const router = {
   init: () => {
@@ -23,31 +24,22 @@ const router = {
 
   go: (route, addToHistory = true) => {
     console.log(route);
+    console.log(app.session);
     if (addToHistory) {
       history.pushState({ route }, '', route);
     }
 
     let pageElement = null;
 
-    switch (route) {
-      case '/':
-        pageElement = new HomePage();
+    if (route == '/') pageElement = new HomePage();
 
-        break;
-    }
+    if (route === '/sign-in') pageElement = new SignInPage();
 
-    switch (route) {
-      case '/sign-in':
-        pageElement = new SignInPage();
+    if (route === '/sign-up') new SignUpPage();
 
-        break;
-    }
-
-    switch (route) {
-      case '/sign-up':
-        pageElement = new SignUpPage();
-
-        break;
+    if (route === '/chatter') pageElement = new ChatterPage();
+    else {
+      pageElement = new HomePage();
     }
 
     if (pageElement) {
