@@ -1,5 +1,3 @@
-import './css/home.css';
-
 const homeContent = `
 <style>
   .img-logo-control {
@@ -16,7 +14,7 @@ const homeContent = `
   }
 
   h1 {
-    font-size: 5.2rem;
+    font-size: 4.8rem;
     color: var(--white);
     margin: 0;
     text-align: center;
@@ -59,6 +57,16 @@ a:hover {
   transform: scale(1.1);
   box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
  }
+
+
+a:last-child {
+  background-color: var(--sky-shade-dark);
+  color: var(--white);
+}
+
+a:last-child:hover {
+  background-color: var(--sky-shade-darkest);
+}
 </style>
 
 <div class="img-logo-control">

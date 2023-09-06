@@ -2,7 +2,7 @@ import Clerk from '@clerk/clerk-js';
 
 const template = document.createElement('template');
 
-const chat = '<div class="shadow-container">sirrrrrrrrrr</div>';
+const chat = '<div class="shadow-container"></div>';
 template.innerHTML = chat;
 
 export default class ChatterPage extends HTMLElement {

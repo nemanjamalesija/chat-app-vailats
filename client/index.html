@@ -4,14 +4,21 @@
     <meta charset="UTF-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Chatter | app</title>
   </head>
   <body>
-    <nav class="nav hiddens"></nav>
+    <nav id="nav" class="nav hiddens"></nav>
+    <div id="cnt" class="max-w-6xl mx-auto grid place-items-center mt-20"></div>
+    <div id="app"></div>
 
-    <div class="cnt max-w-6xl mx-auto grid place-items-center mt-16"></div>
-    <div class="grid grid-cols-[1.5fr,3fr] max-w-6xl mx-auto bg-white my-10">
-      <!-- <section class="channels border border-r border-gray-300" id="#channels">
+    <!-- <div class="grid grid-cols-[1.5fr,3fr] max-w-6xl mx-auto bg-white my-10"> -->
+    <!-- <section class="channels border border-r border-gray-300" id="#channels">
         <div class="bg-zinc-100 px-4 mb-5 h-16">
           <div class="pb-2">
             <img
@@ -142,7 +149,7 @@
           </div>
         </div>
       </section> -->
-    </div>
+    <!-- </div> -->
 
     <script type="module" src="/src/main.ts"></script>
   </body>

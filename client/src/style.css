@@ -7,6 +7,7 @@
 :root {
   --base-size: 1rem;
   --font-medium: 1.125rem;
+  --font-large: 1.25rem;
 
   --scale: 1.25;
   --h1: calc(var(--h2) * var(--scale));
@@ -19,10 +20,13 @@
   --sky: #0284c7;
   --white: #fff;
   --sky-shade-1: #f0f9ff;
-  --sky-shade-darkest: #083344;
+
+  --sky-shade-dark: #0c4a6e;
+  --sky-shade-darkest: #082f49;
   --gray-primary: #444;
 
   --border-radius-small: 15px;
+  --sans-serif: 'Poppins', sans-serif;
 }
 
 * {
@@ -43,53 +47,14 @@ html {
 
 /* LAYOUT */
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--sans-serif);
   background: #2193b0;
   background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
   background: linear-gradient(to right, #6dd5ed, #2193b0);
 }
 
-/* navigation */
-
-.nav {
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  opacity: 0.9;
-  justify-content: space-between;
-  padding: 0.6rem 1.2rem 0.6rem 1.2rem;
-}
-
-.nav-logo-control {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.nav-logo-control div {
-  height: 2.8rem;
-  width: 2.8rem;
-  background: #2193b0;
-  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
-  background: linear-gradient(to right, #6dd5ed, #2193b0);
-}
-
-.nav-logo-control span {
-  color: var(--gray-primary);
-  font-weight: 600;
-  font-size: var(--font-medium);
-}
-
-.nav img {
-  height: 100%;
-  width: 100%;
-}
-
-.cl-avatarBox {
-  height: 2.8rem;
-  width: 2.8rem;
-}
-
-.hiddens {
-  visibility: hidden;
-}
+/* <div id="sign-in" class="sign-in">
+  <div class="text-center mb-5">
+    <a href="/" class="text-white hover:text-sky-50 border-b border-white inline text-xl">Back to home &larr;</a>
+  </div>
+</div> */

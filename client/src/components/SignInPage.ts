@@ -1,20 +1,33 @@
-import Clerk from '@clerk/clerk-js';
-import { clerkPublicKey } from '../constants/clerkPublicKey.ts';
-
 export default class SignInPage extends HTMLElement {
   constructor() {
     super();
   }
 
   async mountSignIn() {
-    document.querySelector<HTMLDivElement>(
-      '.cnt'
-    )!.innerHTML = ` <div id="sign-in">
-  <div class="text-center mb-5">
-    <a href="/" class="text-white hover:text-sky-50 border-b border-white inline text-xl">Back to home &larr;</a>
-  </div>
-</div>
-  `;
+    document.querySelector<HTMLDivElement>('#cnt')!.innerHTML = `
+<style>
+  .sign-in__link-control {
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+
+  .sign-in__link-control a {
+    color: var(--white);
+    font-size: var(--font-medium);
+    border-bottom: 1px solid var(--white);
+    display: inline;
+    transition: all .3s;
+    font-weight: 600;
+  }
+
+  .sign-in__link-control a:hover {
+  border-bottom: none;
+  color: var(--sky-shade-1); 
+  }
+</style>
+
+<div id="sign-in" class="sign-in"></div>
+`;
 
     const signInComponent = document.querySelector<HTMLDivElement>('#sign-in')!;
     const clerk = app.clerk;
@@ -31,6 +44,17 @@ export default class SignInPage extends HTMLElement {
 
   connectedCallback() {
     this.mountSignIn();
+    this.mountBackButton();
+  }
+
+  mountBackButton() {
+    const signUpControl = document.createElement('div');
+    signUpControl.classList.add('sign-in__link-control');
+    signUpControl.innerHTML = `<a href="/">Back to home &larr;</a>`;
+
+    document
+      .querySelector('#sign-in')
+      ?.insertAdjacentElement('afterend', signUpControl);
   }
 }
 

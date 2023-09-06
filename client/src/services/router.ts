@@ -45,7 +45,7 @@ const router = {
     }
 
     if (pageElement) {
-      const cacheMain = document.querySelector('.cnt');
+      const cacheMain = document.querySelector('#cnt');
 
       // clear dom before apending
       if (cacheMain.children[0]) cacheMain.children[0].remove();
