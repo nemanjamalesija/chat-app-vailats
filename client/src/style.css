@@ -20,6 +20,7 @@
   --white: #fff;
   --sky-shade-1: #f0f9ff;
   --sky-shade-darkest: #083344;
+  --gray-primary: #444;
 
   --border-radius-small: 15px;
 }
@@ -43,17 +44,9 @@ html {
 /* LAYOUT */
 body {
   font-family: 'Lato', sans-serif;
-  background: #2193b0; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #6dd5ed,
-    #2193b0
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #6dd5ed,
-    #2193b0
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2193b0;
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
 }
 
 /* navigation */
@@ -63,13 +56,38 @@ body {
   display: flex;
   align-items: center;
   opacity: 0.9;
-  justify-content: end;
-  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+  justify-content: space-between;
+  padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+}
+
+.nav-logo-control {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-logo-control div {
+  height: 2.8rem;
+  width: 2.8rem;
+  background: #2193b0;
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
+}
+
+.nav-logo-control span {
+  color: var(--gray-primary);
+  font-weight: 600;
+  font-size: var(--font-medium);
+}
+
+.nav img {
+  height: 100%;
+  width: 100%;
 }
 
 .cl-avatarBox {
-  height: 2.7rem;
-  width: 2.7rem;
+  height: 2.8rem;
+  width: 2.8rem;
 }
 
 .hiddens {

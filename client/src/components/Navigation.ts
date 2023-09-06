@@ -1,4 +1,7 @@
-export default class UserButton extends HTMLElement {
+const navContent =
+  '<div class="nav-logo-control"><div> <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" /> </div><span>  chatter | app </span></div>';
+
+export default class Navigation extends HTMLElement {
   constructor() {
     super();
   }
@@ -8,6 +11,7 @@ export default class UserButton extends HTMLElement {
     if (!app.currentUser) app.router.go('/');
     document.querySelector('.nav')?.classList.remove('hiddens');
 
+    this.addNavLogo();
     this.mountUserButton();
   }
 
@@ -24,6 +28,10 @@ export default class UserButton extends HTMLElement {
 
     clerk.mountUserButton(userButtonComponent, {});
   }
+
+  addNavLogo() {
+    document.querySelector('.nav')!.innerHTML = navContent;
+  }
 }
 
-customElements.define('user-button', UserButton);
+customElements.define('navigation-page', Navigation);

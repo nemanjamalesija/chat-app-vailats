@@ -31,7 +31,8 @@ const homeContent = `
     font-weight: 500;
     margin-bottom: 1.2rem;
     text-align: center;
-    color: var(--sky-shade-darkest);
+    color: var(--white);
+    opacity: 0.9;
   }
 
   .btn-control {
@@ -48,7 +49,7 @@ const homeContent = `
    text-decoration: none;
    font-size: var(--font-medium);
    font-weight: 700;
-   color: #333;
+   color: var(--gray-primary);
    transition: all 0.3s;
     
    }

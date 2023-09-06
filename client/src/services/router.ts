@@ -1,8 +1,9 @@
-import UserButton from '../components/UserButton';
+import UserButton from '../components/Navigation';
 import ChatterPage from '../components/ChatterPage';
 import HomePage from '../components/HomePage';
 import SignInPage from '../components/SignInPage';
 import SignUpPage from '../components/SignUpPage';
+import Navigation from '../components/Navigation';
 
 const router = {
   init: () => {
@@ -31,14 +32,14 @@ const router = {
     }
 
     let pageElement = null;
-    let userButton = null;
+    let navigation = null;
 
     if (route == '/') pageElement = new HomePage();
     else if (route == '/sign-in') pageElement = new SignInPage();
     else if (route == '/sign-up') pageElement = new SignUpPage();
     else if (route == '/chatter') {
       pageElement = new ChatterPage();
-      userButton = new UserButton();
+      navigation = new Navigation();
     } else {
       pageElement = new HomePage();
     }
@@ -55,9 +56,9 @@ const router = {
       window.scrollY = 0;
     }
 
-    if (userButton) {
+    if (navigation) {
       const cacheMain = document.querySelector('body');
-      cacheMain?.appendChild(userButton);
+      cacheMain?.appendChild(navigation);
     }
   },
 };
