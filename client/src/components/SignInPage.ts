@@ -14,15 +14,15 @@ export default class SignInPage extends HTMLElement {
   .sign-in__link-control a {
     color: var(--white);
     font-size: var(--font-medium);
-    border-bottom: 1px solid var(--white);
     display: inline;
-    transition: all .3s;
+    transition: color .3s;
     font-weight: 600;
   }
 
   .sign-in__link-control a:hover {
   border-bottom: none;
   color: var(--sky-shade-1); 
+  border-bottom: 1px solid var(--white);
   }
 </style>
 

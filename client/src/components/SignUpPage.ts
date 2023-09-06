@@ -46,6 +46,7 @@ export default class SignUpPage extends HTMLElement {
   connectedCallback() {
     this.mountSignUp();
     this.mountBackButton();
+    const clerkPub = document.querySelector('.cl-internal-b3fm6y ');
   }
 
   mountBackButton() {

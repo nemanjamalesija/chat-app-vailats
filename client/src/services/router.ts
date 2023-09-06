@@ -36,7 +36,10 @@ const router = {
 
     if (route == '/') pageElement = new HomePage();
     else if (route == '/sign-in') pageElement = new SignInPage();
+    else if (route == '/sign-in/factor-one') pageElement = new SignInPage();
     else if (route == '/sign-up') pageElement = new SignUpPage();
+    else if (route == '/sign-up/verify-email-address')
+      pageElement = new SignUpPage();
     else if (route == '/chatter') {
       pageElement = new ChatterPage();
       navigation = new Navigation();

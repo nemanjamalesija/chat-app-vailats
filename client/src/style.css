@@ -21,11 +21,11 @@
   --white: #fff;
   --sky-shade-1: #f0f9ff;
 
-  --sky-shade-dark: #0c4a6e;
-  --sky-shade-darkest: #082f49;
+  --sky-shade-dark: #0277b3;
+  --sky-shade-darkest: #026a9f;
   --gray-primary: #444;
 
-  --border-radius-small: 15px;
+  --border-radius-small: 0.375rem;
   --sans-serif: 'Poppins', sans-serif;
 }
 
@@ -47,14 +47,33 @@ html {
 
 /* LAYOUT */
 body {
-  font-family: var(--sans-serif);
-  background: #2193b0;
-  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
-  background: linear-gradient(to right, #6dd5ed, #2193b0);
+  background: #000046; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #1cb5e0,
+    #000046
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #1cb5e0,
+    #000046
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* <div id="sign-in" class="sign-in">
-  <div class="text-center mb-5">
-    <a href="/" class="text-white hover:text-sky-50 border-b border-white inline text-xl">Back to home &larr;</a>
-  </div>
-</div> */
+.cl-internal-b3fm6y {
+  display: none;
+}
+
+.cl-userButtonPopoverFooter {
+  display: none;
+}
+
+.cl-formButtonPrimary {
+  background-color: var(--sky);
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: var(--sky-shade-dark);
+}

@@ -60,14 +60,15 @@ a:hover {
 
 
 a:last-child {
-  background-color: var(--sky-shade-dark);
+  background-color: var(--sky);
   color: var(--white);
 }
 
 a:last-child:hover {
-  background-color: var(--sky-shade-darkest);
+  background-color: var(--sky-shade-dark);
 }
 </style>
+
 
 <div class="img-logo-control">
   <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" class="h-14 w-14 bg-sky-600 inline" />
@@ -76,13 +77,15 @@ a:last-child:hover {
   </h1>
 </div>
 
-<div>
+
+
 <p>Connect with people around the world and talk about the things that interest you.</p>
 
 <div class="btn-control">
   <a class="nav-link" href="/sign-in">Sign in</a>
   <a class="nav-link" href="/sign-up">Sign up</a>
 </div>
+
 `;
 
 const template = document.createElement('template');

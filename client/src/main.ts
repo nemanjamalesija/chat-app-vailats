@@ -17,14 +17,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   app.router.init();
 });
 
-// const socket = io('//localhost:3000');
+const socket = io('//localhost:3000');
 
-// window.addEventListener('DOMContentLoaded', () => {
-//   socket.on('basicEmit', (socket) => {
-//     console.log(socket);
-//   });
+window.addEventListener('DOMContentLoaded', () => {
+  socket.on('connect', () => {
+    console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
+  });
 
-//   return () => {
-//     socket.close();
-//   };
-// });
+  return () => {
+    socket.close();
+  };
+});
