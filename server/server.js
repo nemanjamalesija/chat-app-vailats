@@ -12,11 +12,15 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
-  setInterval(() => {
-    const value = 'From server value';
+  // setInterval(() => {
+  //   const value = 'From server value';
 
-    socket.emit('basicEmit', value, '2', Buffer.from([3]));
-  }, 1000);
+  //   socket.emit('basicEmit', value, '2', Buffer.from([3]));
+  // }, 1000);
+
+  // socket.emit(value);
+
+  console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
 });
 
 server.listen(3000, () => {
