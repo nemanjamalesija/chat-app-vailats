@@ -1,12 +1,12 @@
 const homeContent = `
 <style>
   .channels-section {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--gray-light-2);
 
 }
 
   .channels-header {
-  background-color: #f0f0f0;
+  background-color: var(--gray-light);
   padding: 0.5rem 0 0rem 0.5rem;
   height: 60px;
   border-radius:  var(--border-radius-small) 0 0 0;
@@ -34,9 +34,12 @@ const homeContent = `
   font-size: var(--base);
   padding: 1rem;
   padding-bottom: 0;
+  margin: 0;
+  padding: 1.25rem 1rem;
   padding-left: 0.5rem;
   font-weight: 700;
   color: var(--sky);
+  border-bottom: 1px solid var(--gray-light);
 }
 
   .channels-list {
@@ -50,14 +53,18 @@ const homeContent = `
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.channels-list-item:not(:last-child) {
+  border-bottom: 1px solid var(--gray-light);
 }
 
   .channel-active {
-  background-color: #f0f0f0;
-  border-right: 3px solid var(--sky);
-
-}
+    background-color: var(--gray-light);
+    border-right: 3px solid var(--sky);
+   }
 
   .channels-text {
   font-size: 1rem;
@@ -86,24 +93,38 @@ const homeContent = `
     <div class="channels-category">
       <h2 class="channels-category-title">Rooms</h2>
       <ul class="channels-list">
-        <li class="channels-list-item channel-active">
-          <span class="channels-text">MeetUp</span>
+        <li class="channels-list-item">
+          <span class="channels-text">Meet up</span>
           <span class="channels-small-text">11:51</span>
         </li>
         <li class="channels-list-item">
-          <span class="channels-text">OctobarFest</span>
+          <span class="channels-text">Javascript</span>
+          <span class="channels-small-text">11:51</span>
+        </li>
+        <li class="channels-list-item channel-active">
+          <span class="channels-text">React</span>
           <span class="channels-small-text">11:51</span>
         </li>
          <li class="channels-list-item">
-          <span class="channels-text">WeatherChannel</span>
+          <span class="channels-text">Vue</span>
           <span class="channels-small-text">Yesterday</span>
         </li>
          <li class="channels-list-item">
-          <span class="channels-text">SeventContinents</span>
+          <span class="channels-text">Node</span>
+          <span class="channels-small-text">23 May 2018</span>
+        </li>
+        <li class="channels-list-item">
+          <span class="channels-text">Angular</span>
+          <span class="channels-small-text">23 May 2018</span>
+        </li>
+         <li class="channels-list-item">
+          <span class="channels-text">Next js</span>
           <span class="channels-small-text">23 May 2018</span>
         </li>
       </ul>
     </div>
+
+
 </section>
 `;
 

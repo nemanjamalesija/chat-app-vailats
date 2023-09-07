@@ -7,7 +7,6 @@ const navContent = `
   background-color: var(--white);
   display: flex;
   align-items: center;
-  opacity: 0.9;
   justify-content: space-between;
   padding: 0.6rem 1.2rem 0.6rem 1.2rem;
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
