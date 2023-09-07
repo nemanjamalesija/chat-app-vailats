@@ -1,11 +1,22 @@
-import Clerk from '@clerk/clerk-js';
-import proxiedRouter from '../services/router';
 import proxiedUserStore from '../services/userStore';
+import proxiedRouter from '../services/router';
+import Channels from '../components/Channels';
+import Chats from '../components/Chats';
+
+const chatterPageContent = `<style>
+  :host {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    width: 100%;
+    max-height: 600px;
+
+  }
+</style>
+`;
 
 const template = document.createElement('template');
-
-const chat = '<div class="shadow-container"></div>';
-template.innerHTML = chat;
+template.innerHTML = chatterPageContent;
 
 export default class ChatterPage extends HTMLElement {
   constructor() {
@@ -23,6 +34,12 @@ export default class ChatterPage extends HTMLElement {
     proxiedUserStore.id = crypto.randomUUID();
     proxiedUserStore.firstName = app.clerk.user.firstName;
     proxiedUserStore.lastName = app.clerk.user.lastName;
+
+    const channelsComponent = new Channels();
+    const chatsComponent = new Chats();
+
+    this.shadowRoot.appendChild(channelsComponent);
+    this.shadowRoot.appendChild(chatsComponent);
   }
 }
 

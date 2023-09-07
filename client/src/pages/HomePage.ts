@@ -99,7 +99,6 @@ const template = document.createElement('template');
 template.innerHTML = homeContent;
 
 export default class HomePage extends HTMLElement {
-  red = false;
   constructor() {
     super();
   }
@@ -107,10 +106,10 @@ export default class HomePage extends HTMLElement {
   // when the component is attached to the DOM
   connectedCallback() {
     if (app.clerk.user) proxiedRouter.go('/chatter');
-
-    this.attachShadow({ mode: 'open' }).appendChild(
-      template.content.cloneNode(true)
-    );
+    else
+      this.attachShadow({ mode: 'open' }).appendChild(
+        template.content.cloneNode(true)
+      );
   }
 }
 
