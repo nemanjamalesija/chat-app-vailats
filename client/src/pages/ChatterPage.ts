@@ -10,6 +10,8 @@ const chatterPageContent = `<style>
     grid-template-columns: 1.5fr 3fr;
     width: 100%;
     max-height: 600px;
+    border-radius: var(--border-radius-small)
+ 
 
   }
 </style>

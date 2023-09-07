@@ -61,6 +61,13 @@ body {
   min-height: 100vh;
 }
 
+.cnt {
+  max-width: 1100px;
+  display: grid;
+  place-items: center;
+  margin: 5rem auto;
+}
+
 .cl-internal-b3fm6y {
   display: none;
 }

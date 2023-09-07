@@ -1,9 +1,12 @@
 const homeContent = `
 <style>
-.chat-room {
-background-color: #f0f0f0;
- padding: 0.5rem 0 0rem 0.5rem;
-height: 60px;
+  .chat-room {
+  background-color: #f0f0f0;
+  padding: 0.5rem 0 0rem 0.5rem;
+  height: 60px;
+  border-radius:  0 var(--border-radius-small) 0 0;
+  display: flex;
+  align-items: center;
 
 }
 
