@@ -1,8 +1,7 @@
-import UserButton from '../components/Navigation';
-import ChatterPage from '../components/ChatterPage';
-import HomePage from '../components/HomePage';
-import SignInPage from '../components/SignInPage';
-import SignUpPage from '../components/SignUpPage';
+import ChatterPage from '../pages/ChatterPage';
+import HomePage from '../pages/HomePage';
+import SignInPage from '../pages/SignInPage';
+import SignUpPage from '../pages/SignUpPage';
 import Navigation from '../components/Navigation';
 
 const router = {
@@ -66,4 +65,10 @@ const router = {
   },
 };
 
-export default router;
+const proxiedRouter = new Proxy(router, {
+  get: (obj, prop) => {
+    return Reflect.get(obj, prop);
+  },
+});
+
+export default proxiedRouter;

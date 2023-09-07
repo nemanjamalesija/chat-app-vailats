@@ -30,10 +30,8 @@ export default class SignInPage extends HTMLElement {
 `;
 
     const signInComponent = document.querySelector<HTMLDivElement>('#sign-in')!;
-    const clerk = app.clerk;
-    await clerk.load();
 
-    clerk.mountSignIn(signInComponent, {
+    app.clerk.mountSignIn(signInComponent, {
       routing: 'path',
       path: '/sign-in',
       signUpUrl: 'sign-up',

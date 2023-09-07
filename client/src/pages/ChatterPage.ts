@@ -1,4 +1,6 @@
 import Clerk from '@clerk/clerk-js';
+import proxiedRouter from '../services/router';
+import proxiedUserStore from '../services/userStore';
 
 const template = document.createElement('template');
 
@@ -16,7 +18,11 @@ export default class ChatterPage extends HTMLElement {
 
   // when the component is attached to the DOM
   connectedCallback() {
-    if (!app.currentUser) app.router.go('/');
+    if (!app.clerk.user) proxiedRouter.go('/');
+
+    proxiedUserStore.id = crypto.randomUUID();
+    proxiedUserStore.firstName = app.clerk.user.firstName;
+    proxiedUserStore.lastName = app.clerk.user.lastName;
   }
 }
 

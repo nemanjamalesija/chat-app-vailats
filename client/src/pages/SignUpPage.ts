@@ -31,10 +31,8 @@ export default class SignUpPage extends HTMLElement {
   `;
 
     const signUpComponent = document.querySelector<HTMLDivElement>('#sign-up')!;
-    const clerk = app.clerk;
-    await clerk.load();
 
-    clerk.mountSignUp(signUpComponent, {
+    app.clerk.mountSignUp(signUpComponent, {
       routing: 'path',
       path: '/sign-up',
       signInUrl: '/sign-in',
@@ -46,7 +44,6 @@ export default class SignUpPage extends HTMLElement {
   connectedCallback() {
     this.mountSignUp();
     this.mountBackButton();
-    const clerkPub = document.querySelector('.cl-internal-b3fm6y ');
   }
 
   mountBackButton() {

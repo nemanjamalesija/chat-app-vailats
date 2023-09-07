@@ -1,3 +1,6 @@
+import proxiedRouter from '../services/router';
+import proxiedUserStore from '../services/userStore';
+
 const navContent = `
 <style>
  .nav {
@@ -55,7 +58,7 @@ export default class Navigation extends HTMLElement {
 
   // when the component is attached to the DOM
   connectedCallback() {
-    if (!app.currentUser) app.router.go('/');
+    if (!app.clerk.user) proxiedRouter.go('/');
     document.querySelector('.nav')?.classList.remove('hiddens');
 
     this.addNavLogo();
@@ -70,10 +73,7 @@ export default class Navigation extends HTMLElement {
     const userButtonComponent =
       document.querySelector<HTMLDivElement>('#user-button')!;
 
-    const clerk = app.clerk;
-    await clerk.load();
-
-    clerk.mountUserButton(userButtonComponent, {});
+    app.clerk.mountUserButton(userButtonComponent, {});
   }
 
   addNavLogo() {

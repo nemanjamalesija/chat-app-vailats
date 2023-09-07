@@ -1,3 +1,10 @@
+import Clerk from '@clerk/clerk-js';
+import proxiedRouter from '../services/router';
+import currentUser from '@clerk/clerk-js';
+import { clerkPublicKey } from '../constants/clerkPublicKey';
+import proxiedClerk from '../services/clerk';
+import clerk from '../services/clerk';
+
 const homeContent = `
 <style>
   .img-logo-control {
@@ -95,15 +102,15 @@ export default class HomePage extends HTMLElement {
   red = false;
   constructor() {
     super();
-
-    this.attachShadow({ mode: 'open' }).appendChild(
-      template.content.cloneNode(true)
-    );
   }
 
   // when the component is attached to the DOM
   connectedCallback() {
-    if (app.currentUser) app.router.go('/chatter');
+    if (app.clerk.user) proxiedRouter.go('/chatter');
+
+    this.attachShadow({ mode: 'open' }).appendChild(
+      template.content.cloneNode(true)
+    );
   }
 }
 
