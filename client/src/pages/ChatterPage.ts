@@ -2,6 +2,7 @@ import proxiedUserStore from '../services/userStore';
 import proxiedRouter from '../services/router';
 import Channels from '../components/Channels';
 import Chats from '../components/Chats';
+import Navigation from '../components/Navigation';
 
 const chatterPageContent = `<style>
   :host {

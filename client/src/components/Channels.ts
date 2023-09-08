@@ -79,6 +79,7 @@ const homeContent = `
 </style>
 
  <section class="channels-section">
+
   <div class="channels-header">
     <img
       id="logo"
@@ -89,12 +90,14 @@ const homeContent = `
     <h1 class="channels-heading">chatter | app</h1>
   </div>
 
+    
   <div class="channels-content">
+
     <div class="channels-category">
       <h2 class="channels-category-title">Rooms</h2>
       <ul class="channels-list">
         <li class="channels-list-item">
-          <span class="channels-text">Meet up</span>
+          <span class="channels-text">General discussions</span>
           <span class="channels-small-text">11:51</span>
         </li>
         <li class="channels-list-item">
@@ -124,7 +127,8 @@ const homeContent = `
       </ul>
     </div>
 
-
+   </div>
+ 
 </section>
 `;
 

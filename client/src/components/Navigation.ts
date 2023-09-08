@@ -47,7 +47,12 @@ const navContent = `
 }
 </style>
 
-<div class="nav-logo-control"><div> <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" /> </div><span>  chatter | app </span></div>
+<div class="nav-logo-control">
+      <div> 
+        <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" /> 
+      </div>
+      <span>  chatter | app </span>
+</div>
 `;
 
 export default class Navigation extends HTMLElement {
@@ -80,4 +85,4 @@ export default class Navigation extends HTMLElement {
   }
 }
 
-customElements.define('navigation-page', Navigation);
+customElements.define('navigation-component', Navigation);

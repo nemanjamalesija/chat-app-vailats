@@ -59,8 +59,7 @@ const router = {
     }
 
     if (navigation) {
-      const cacheMain = document.querySelector('body');
-      cacheMain?.appendChild(navigation);
+      document.querySelector('#nav')!.appendChild(navigation);
     }
   },
 };

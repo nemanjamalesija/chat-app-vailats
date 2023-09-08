@@ -7,13 +7,13 @@ import clerk from '../services/clerk';
 
 const homeContent = `
 <style>
-  .img-logo-control {
+  .logo-img-control {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     text-align: center;
   }
 
-  img {
+  .logo-img {
     display: inline;
     vertical-align: bottom;
     height: 9.5rem;
@@ -77,22 +77,19 @@ a:last-child:hover {
 </style>
 
 
-<div class="img-logo-control">
-  <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" class="h-14 w-14 bg-sky-600 inline" />
-  <h1 class="heading-primary text-xl text-sky-600 font-bold inline align-bottom">
+<div class="logo-img-control">
+  <img id="logo" src="https://ip.lfe.mw.tum.de/sections/moocus.png" alt="logo" class="logo-img"/>
+  <h1 class="heading-primary">
     chatter | app
   </h1>
 </div>
 
-
-
-<p>Connect with people around the world and talk about the things that interest you.</p>
+  <p>Connect with people around the world and quack about the latest trends in web development.</p>
 
 <div class="btn-control">
   <a class="nav-link" href="/sign-in">Sign in</a>
   <a class="nav-link" href="/sign-up">Sign up</a>
 </div>
-
 `;
 
 const template = document.createElement('template');
