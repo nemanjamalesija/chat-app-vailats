@@ -1,3 +1,4 @@
+import proxiedChatStore from '../services/chatsStore';
 import InputSendMessage from './InputSendMessage';
 
 const chatsContent = `
@@ -53,7 +54,7 @@ color: var(--sky);
       <section class="chats" id="#chats">
 
        <div class="chat-room">
-         <h2>React</h2>
+         <h2>Select a room to start quacking</h2>
        </div>
 
        <div class="chat-messages">
@@ -92,6 +93,18 @@ export default class Chats extends HTMLElement {
   connectedCallback() {
     const inputSendMessage = new InputSendMessage();
     this.shadowRoot?.appendChild(inputSendMessage);
+    this.setChannelName();
+  }
+
+  setChannelName() {
+    const chatHeading = this.shadowRoot.querySelector('h2');
+
+    // if (proxiedChatStore.activeChannel)
+    //   chatHeading!.textContent = proxiedChatStore.activeChannel;
+    window.addEventListener('activeChannelChange', () => {
+      chatHeading!.textContent = proxiedChatStore.activeChannel;
+      console.log(proxiedChatStore.activeChannel);
+    });
   }
 }
 

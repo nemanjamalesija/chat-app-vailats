@@ -1,3 +1,5 @@
+import proxiedChatStore from '../services/chatsStore';
+
 const homeContent = `
 <style>
   .channels-section {
@@ -104,7 +106,7 @@ const homeContent = `
           <span class="channels-text">Javascript</span>
           <span class="channels-small-text">11:51</span>
         </li>
-        <li class="channels-list-item channel-active">
+        <li class="channels-list-item">
           <span class="channels-text">React</span>
           <span class="channels-small-text">11:51</span>
         </li>
@@ -161,6 +163,11 @@ export default class Channels extends HTMLElement {
 
         // Add the "channel-active" class to the clicked channel
         chan.classList.add('channel-active');
+
+        // select first span in the li to get the text content
+        const activeChannelText = chan.querySelector('span');
+        proxiedChatStore.activeChannel = activeChannelText!
+          .textContent as string;
       });
     });
   }
