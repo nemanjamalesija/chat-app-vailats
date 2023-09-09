@@ -145,7 +145,25 @@ export default class Channels extends HTMLElement {
   }
 
   // when the component is attached to the DOM
-  connectedCallback() {}
+  connectedCallback() {
+    this.setActiveChannel();
+  }
+
+  setActiveChannel() {
+    const channels = this.shadowRoot?.querySelectorAll('li');
+
+    channels?.forEach((chan) => {
+      chan.addEventListener('click', (e) => {
+        // Remove the "channel-active" class from all channels first
+        channels.forEach((c) => {
+          c.classList.remove('channel-active');
+        });
+
+        // Add the "channel-active" class to the clicked channel
+        chan.classList.add('channel-active');
+      });
+    });
+  }
 }
 
 customElements.define('channels-component', Channels);
