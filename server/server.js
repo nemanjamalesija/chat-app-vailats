@@ -2,14 +2,7 @@ const { app } = require('./app.js');
 const { Server } = require('socket.io');
 const http = require('http');
 const formatMessage = require('./utils/messages');
-const {
-  userJoin,
-  getCurrentUser,
-  userLeave,
-  getRoomUsers,
-} = require('./utils/users');
-
-let { users } = require('./utils/users');
+const { userJoin, getCurrentUser, userLeave } = require('./utils/users');
 
 const chatBot = 'Chatter Bot';
 
@@ -39,19 +32,11 @@ io.on('connection', (socket) => {
         'message',
         formatMessage(chatBot, '', `${user.username} has joined the chat`)
       );
-
-    // Send users and room info
-    io.to(user.room).emit('roomUsers', {
-      room: user.room,
-      users: getRoomUsers(user.room),
-    });
   });
 
   // Listen for chatMessage
   socket.on('chatMessage', (msg) => {
     const user = getCurrentUser(socket.id);
-
-    console.log(user);
 
     io.to(user.room).emit(
       'message',
@@ -68,12 +53,6 @@ io.on('connection', (socket) => {
         'message',
         formatMessage(chatBot, '', `${user.username} has left the chat`)
       );
-
-      // Send users and room info
-      io.to(user.room).emit('roomUsers', {
-        room: user.room,
-        users: getRoomUsers(user.room),
-      });
     }
   });
 });
