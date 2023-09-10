@@ -2,7 +2,7 @@ import proxiedUserStore from '../services/userStore';
 import proxiedRouter from '../services/router';
 import Channels from '../components/Channels';
 import Chats from '../components/Chats';
-import Navigation from '../components/Navigation';
+import { io } from 'socket.io-client';
 
 const chatterPageContent = `<style>
   :host {
@@ -31,6 +31,10 @@ export default class ChatterPage extends HTMLElement {
 
   // when the component is attached to the DOM
   connectedCallback() {
+    const socket = io('//localhost:3000');
+
+    app.socket = socket;
+
     if (!app.clerk.user) proxiedRouter.go('/');
 
     proxiedUserStore.id = crypto.randomUUID();

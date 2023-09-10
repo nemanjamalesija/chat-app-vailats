@@ -80,17 +80,9 @@ export default class Chats extends HTMLElement {
     this.shadowRoot?.appendChild(inputSendMessage);
     this.setChannelName();
 
-    const socket = io('//localhost:3000');
-
-    app.socket = socket;
-
     // Message from server
-    socket.on('message', (message) => {
+    app.socket.on('message', (message) => {
       this.outputMessage(message);
-
-      //view stays always at the bottom
-      const chatMessages = this.shadowRoot!.querySelector('.chat-messages');
-      chatMessages!.scrollTop = chatMessages!.scrollHeight;
     });
   }
 
@@ -104,21 +96,32 @@ export default class Chats extends HTMLElement {
   }
 
   // Output message to DOM
-  outputMessage(message: { username: string; text: string; time: Date }) {
+  outputMessage(message: {
+    username: string;
+    room: string;
+    text: string;
+    time: Date;
+  }) {
     if (!message.username) return;
 
-    const div = document.createElement('div');
-    div.classList.add('message');
-    const p = document.createElement('p');
-    p.classList.add('meta');
-    p.innerText = message.username;
-    p.innerHTML += `<span> ${message.time}</span>`;
-    div.appendChild(p);
-    const para = document.createElement('p');
-    para.classList.add('text');
-    para.innerText = message.text;
-    div.appendChild(para);
-    this.shadowRoot!.querySelector('.chat-messages')!.appendChild(div);
+    if (message.room.trim() === proxiedChatStore.activeChannel) {
+      const div = document.createElement('div');
+      div.classList.add('message');
+      const p = document.createElement('p');
+      p.classList.add('meta');
+      p.innerText = message.username;
+      p.innerHTML += `<span> ${message.time}</span>`;
+      div.appendChild(p);
+      const para = document.createElement('p');
+      para.classList.add('text');
+      para.innerText = message.text;
+      div.appendChild(para);
+      this.shadowRoot!.querySelector('.chat-messages')!.appendChild(div);
+
+      //view stays always at the bottom
+      const chatMessages = this.shadowRoot!.querySelector('.chat-messages');
+      chatMessages!.scrollTop = chatMessages!.scrollHeight;
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import proxiedChatStore from '../services/chatsStore';
-import { io } from 'socket.io-client';
+import proxiedUserStore from '../services/userStore';
 
 const homeContent = `
 <style>
@@ -101,31 +101,31 @@ const homeContent = `
       <ul class="channels-list">
         <li class="channels-list-item">
           <span class="channels-text">General discussion</span>
-          <span class="channels-small-text">11:51</span>
+        
         </li>
         <li class="channels-list-item">
           <span class="channels-text">Javascript</span>
-          <span class="channels-small-text">11:51</span>
+        
         </li>
         <li class="channels-list-item">
           <span class="channels-text">React</span>
-          <span class="channels-small-text">11:51</span>
+        
         </li>
          <li class="channels-list-item">
           <span class="channels-text">Vue</span>
-          <span class="channels-small-text">Yesterday</span>
+        
         </li>
          <li class="channels-list-item">
           <span class="channels-text">Node</span>
-          <span class="channels-small-text">23 May 2018</span>
+      
         </li>
         <li class="channels-list-item">
           <span class="channels-text">Angular</span>
-          <span class="channels-small-text">23 May 2018</span>
+        
         </li>
          <li class="channels-list-item">
           <span class="channels-text">Next js</span>
-          <span class="channels-small-text">23 May 2018</span>
+        
         </li>
       </ul>
     </div>
@@ -169,6 +169,12 @@ export default class Channels extends HTMLElement {
         const activeChannelText = chan.querySelector('span');
         proxiedChatStore.activeChannel = activeChannelText!
           .textContent as string;
+
+        // join chat room server side
+        app.socket.emit('joinRoom', {
+          username: proxiedUserStore.firstName,
+          room: chan.textContent,
+        });
       });
     });
   }

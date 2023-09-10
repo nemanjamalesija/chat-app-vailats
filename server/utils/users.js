@@ -1,9 +1,18 @@
-const users = [];
+let users = [];
 
 // Join user to chat
 function userJoin(id, username, room) {
   const user = { id, username, room };
 
+  // Find the index of the existing user with the same id
+  const existingUserIndex = users.findIndex((u) => u.id === user.id);
+
+  if (existingUserIndex !== -1) {
+    // If an existing user is found, remove it from the array
+    users.splice(existingUserIndex, 1);
+  }
+
+  // Add the new user to the array
   users.push(user);
 
   return user;
@@ -33,4 +42,5 @@ module.exports = {
   getCurrentUser,
   userLeave,
   getRoomUsers,
+  users,
 };
