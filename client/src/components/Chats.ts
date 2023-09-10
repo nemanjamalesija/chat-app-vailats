@@ -28,7 +28,7 @@ color: var(--sky);
 
 .chat-messages {
 	padding:  1rem;
-	max-height: 500px;
+	max-height: 400px;
 	overflow-y: scroll;
 }
 
@@ -58,7 +58,7 @@ color: var(--sky);
        </div>
 
        <div class="chat-messages"></div>     
-   
+
      </section> 
 `;
 
@@ -82,9 +82,15 @@ export default class Chats extends HTMLElement {
 
     const socket = io('//localhost:3000');
 
+    app.socket = socket;
+
     // Message from server
     socket.on('message', (message) => {
       this.outputMessage(message);
+
+      //view stays always at the bottom
+      const chatMessages = this.shadowRoot!.querySelector('.chat-messages');
+      chatMessages!.scrollTop = chatMessages!.scrollHeight;
     });
   }
 
@@ -92,12 +98,13 @@ export default class Chats extends HTMLElement {
     const chatHeading = this.shadowRoot!.querySelector('h2');
 
     window.addEventListener('activeChannelChange', () => {
+      this.shadowRoot!.querySelector('.chat-messages')!.innerHTML = '';
       chatHeading!.textContent = proxiedChatStore.activeChannel;
     });
   }
 
   // Output message to DOM
-  outputMessage(message) {
+  outputMessage(message: { username: string; text: string; time: Date }) {
     if (!message.username) return;
 
     const div = document.createElement('div');
@@ -111,7 +118,7 @@ export default class Chats extends HTMLElement {
     para.classList.add('text');
     para.innerText = message.text;
     div.appendChild(para);
-    this.shadowRoot.querySelector('.chat-messages').appendChild(div);
+    this.shadowRoot!.querySelector('.chat-messages')!.appendChild(div);
   }
 }
 

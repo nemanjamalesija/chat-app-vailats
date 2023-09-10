@@ -3,6 +3,8 @@ const { Server } = require('socket.io');
 const http = require('http');
 const formatMessage = require('./utils/messages');
 
+const chatBot = 'Chatter Bot';
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -15,14 +17,17 @@ const io = new Server(server, {
 // Run when client connects
 io.on('connection', (socket) => {
   // Wemcome current user
-  socket.emit('message', 'Welcome to the chatter room!');
+  socket.emit('message', formatMessage(chatBot, 'Welcome to chatter!'));
 
   // Broadcast when user connects
-  socket.broadcast.emit('message', 'An user has joined the chat...');
+  socket.broadcast.emit(
+    'message',
+    formatMessage(chatBot, 'An user has joined the chat...')
+  );
 
   // when disconnect
   socket.on('disconnect', () => {
-    io.emit('message', 'An user has left the chat...');
+    io.emit('message', formatMessage(chatBot, 'An user has left the chat...'));
   });
 
   // Listen for chatMessage

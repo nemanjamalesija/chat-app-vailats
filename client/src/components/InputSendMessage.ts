@@ -1,5 +1,3 @@
-import { io } from 'socket.io-client';
-
 const inputSendMessageContent = `  
 <style>
  .input-area {
@@ -84,8 +82,6 @@ export default class InputSendMessage extends HTMLElement {
 
   // when the component is attached to the DOM
   connectedCallback() {
-    const socket = io('//localhost:3000');
-
     const chatForm = this.shadowRoot?.querySelector('form');
 
     // Message submit
@@ -93,7 +89,7 @@ export default class InputSendMessage extends HTMLElement {
       e.preventDefault();
 
       // Get message text
-      let msg = e.target.elements.msg.value;
+      let msg = e.target!.elements.msg.value;
 
       msg = msg.trim();
 
@@ -102,11 +98,11 @@ export default class InputSendMessage extends HTMLElement {
       }
 
       // // Emit message to server
-      socket.emit('chatMessage', msg);
+      app.socket.emit('chatMessage', msg);
 
       // Clear input
-      e.target.elements.msg.value = '';
-      e.target.elements.msg.focus();
+      e.target!.elements.msg.value = '';
+      e.target!.elements.msg.focus();
     });
   }
 }
