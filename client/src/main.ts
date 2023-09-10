@@ -14,15 +14,3 @@ window.addEventListener('DOMContentLoaded', async () => {
   app.clerk = clerk;
   proxiedRouter.init();
 });
-
-// const socket = io('//localhost:3000');
-
-// window.addEventListener('DOMContentLoaded', () => {
-//   socket.on('connect', () => {
-//     console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
-//   });
-
-//   return () => {
-//     socket.close();
-//   };
-// });

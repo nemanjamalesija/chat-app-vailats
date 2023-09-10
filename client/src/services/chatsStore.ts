@@ -1,4 +1,4 @@
-const chatsStore = { activeChannel: 'General discussion' };
+const chatsStore = { activeChannel: '' };
 
 const proxiedChatStore = new Proxy(chatsStore, {
   get: (obj, prop) => {

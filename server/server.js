@@ -1,6 +1,7 @@
 const { app } = require('./app.js');
 const { Server } = require('socket.io');
 const http = require('http');
+const formatMessage = require('./utils/messages');
 
 const server = http.createServer(app);
 
@@ -11,16 +12,29 @@ const io = new Server(server, {
   },
 });
 
+// Run when client connects
 io.on('connection', (socket) => {
-  // setInterval(() => {
-  //   const value = 'From server value';
+  // Wemcome current user
+  socket.emit('message', 'Welcome to the chatter room!');
 
-  //   socket.emit('basicEmit', value, '2', Buffer.from([3]));
-  // }, 1000);
+  // Broadcast when user connects
+  socket.broadcast.emit('message', 'An user has joined the chat...');
 
-  // socket.emit(value);
+  // when disconnect
+  socket.on('disconnect', () => {
+    io.emit('message', 'An user has left the chat...');
+  });
 
-  console.log(socket.id); // ojIckSD2jqNzOqIrAGzL
+  // Listen for chatMessage
+  socket.on('chatMessage', (msg) => {
+    // const user = getCurrentUser(socket.id);
+
+    // io.to(user.room).emit('message', formatMessage('Nemanja', msg));
+
+    console.log(msg);
+
+    io.emit('message', formatMessage('Nemanja', msg));
+  });
 });
 
 server.listen(3000, () => {

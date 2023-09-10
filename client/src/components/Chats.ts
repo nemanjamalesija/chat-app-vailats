@@ -1,5 +1,6 @@
 import proxiedChatStore from '../services/chatsStore';
 import InputSendMessage from './InputSendMessage';
+import { io } from 'socket.io-client';
 
 const chatsContent = `
 <style>
@@ -52,28 +53,12 @@ color: var(--sky);
 </style>
 
       <section class="chats" id="#chats">
-
        <div class="chat-room">
          <h2>Select a room to start quacking</h2>
        </div>
 
-       <div class="chat-messages">
-         <div class="message">
-           <p class="meta">Brad <span>9:12pm</span></p>
-           <p class="text">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-             repudiandae.
-           </p>
-         </div>
-         <div class="message">
-           <p class="meta">Mary <span>9:15pm</span></p>
-           <p class="text">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-             repudiandae.
-           </p>
-         </div>
-       </div>
-
+       <div class="chat-messages"></div>     
+   
      </section> 
 `;
 
@@ -94,17 +79,39 @@ export default class Chats extends HTMLElement {
     const inputSendMessage = new InputSendMessage();
     this.shadowRoot?.appendChild(inputSendMessage);
     this.setChannelName();
+
+    const socket = io('//localhost:3000');
+
+    // Message from server
+    socket.on('message', (message) => {
+      this.outputMessage(message);
+    });
   }
 
   setChannelName() {
-    const chatHeading = this.shadowRoot.querySelector('h2');
+    const chatHeading = this.shadowRoot!.querySelector('h2');
 
-    // if (proxiedChatStore.activeChannel)
-    //   chatHeading!.textContent = proxiedChatStore.activeChannel;
     window.addEventListener('activeChannelChange', () => {
       chatHeading!.textContent = proxiedChatStore.activeChannel;
-      console.log(proxiedChatStore.activeChannel);
     });
+  }
+
+  // Output message to DOM
+  outputMessage(message) {
+    if (!message.username) return;
+
+    const div = document.createElement('div');
+    div.classList.add('message');
+    const p = document.createElement('p');
+    p.classList.add('meta');
+    p.innerText = message.username;
+    p.innerHTML += `<span> ${message.time}</span>`;
+    div.appendChild(p);
+    const para = document.createElement('p');
+    para.classList.add('text');
+    para.innerText = message.text;
+    div.appendChild(para);
+    this.shadowRoot.querySelector('.chat-messages').appendChild(div);
   }
 }
 

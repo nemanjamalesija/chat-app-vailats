@@ -1,3 +1,5 @@
+import { io } from 'socket.io-client';
+
 const inputSendMessageContent = `  
 <style>
  .input-area {
@@ -9,8 +11,10 @@ const inputSendMessageContent = `
     }
 
 
- #message-input {
-    flex-basis: 100%;
+form {width: 100%; }
+
+ #msg {
+    width: 100%;
     height: 3rem;
     margin: 0 1.5rem;
     padding: 0 1rem;
@@ -20,7 +24,7 @@ const inputSendMessageContent = `
     }
 
 
- #message-input:focus {
+ #msg:focus {
   border-color: var(--sky);
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
   outline: none;
@@ -51,8 +55,10 @@ const inputSendMessageContent = `
        </svg>
      </div>
 
-     <input type="text" id="message-input" name="message-input" minlength="1" maxlength="500"
-       placeholder="Write your message...">
+     <form>
+        <input type="text" id="msg" name="message" minlength="1" maxlength="500"
+        placeholder="Write your message...">
+     </form>
 
      <button class="btn-send">
        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -77,7 +83,32 @@ export default class InputSendMessage extends HTMLElement {
   }
 
   // when the component is attached to the DOM
-  connectedCallback() {}
+  connectedCallback() {
+    const socket = io('//localhost:3000');
+
+    const chatForm = this.shadowRoot?.querySelector('form');
+
+    // Message submit
+    chatForm!.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get message text
+      let msg = e.target.elements.msg.value;
+
+      msg = msg.trim();
+
+      if (!msg) {
+        return false;
+      }
+
+      // // Emit message to server
+      socket.emit('chatMessage', msg);
+
+      // Clear input
+      e.target.elements.msg.value = '';
+      e.target.elements.msg.focus();
+    });
+  }
 }
 
 customElements.define('send-message-component', InputSendMessage);

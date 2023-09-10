@@ -1,4 +1,5 @@
 import proxiedChatStore from '../services/chatsStore';
+import { io } from 'socket.io-client';
 
 const homeContent = `
 <style>
@@ -99,7 +100,7 @@ const homeContent = `
       <h2 class="channels-category-title">Rooms</h2>
       <ul class="channels-list">
         <li class="channels-list-item">
-          <span class="channels-text">General discussions</span>
+          <span class="channels-text">General discussion</span>
           <span class="channels-small-text">11:51</span>
         </li>
         <li class="channels-list-item">
