@@ -30,14 +30,14 @@ io.on('connection', (socket) => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(chatBot, 'Welcome to ChatCord!'));
+    socket.emit('message', formatMessage(chatBot, '', 'Welcome to ChatCord!'));
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(chatBot, `${user.username} has joined the chat`)
+        formatMessage(chatBot, '', `${user.username} has joined the chat`)
       );
 
     // Send users and room info
@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
     if (user) {
       io.to(user.room).emit(
         'message',
-        formatMessage(chatBot, `${user.username} has left the chat`)
+        formatMessage(chatBot, '', `${user.username} has left the chat`)
       );
 
       // Send users and room info

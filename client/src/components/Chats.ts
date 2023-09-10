@@ -104,7 +104,12 @@ export default class Chats extends HTMLElement {
   }) {
     if (!message.username) return;
 
-    if (message.room.trim() === proxiedChatStore.activeChannel) {
+    console.log(message);
+
+    if (
+      message.room.trim() == proxiedChatStore.activeChannel ||
+      message.username == 'Chatter Bot'
+    ) {
       const div = document.createElement('div');
       div.classList.add('message');
       const p = document.createElement('p');
